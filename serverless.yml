@@ -1,0 +1,17 @@
+service: serverless
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: eu-west-3
+  stage: dev
+
+plugins:
+  - serverless-offline
+
+functions:  
+  todos:
+    handler: src/api/api.handler
+    events:
+      - http: ANY /
+      - http: 'ANY /{params+}'
